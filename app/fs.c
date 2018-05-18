@@ -4,8 +4,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <limits.h>
+#include <libgen.h>
+#include <string.h>
 
 static char *ft_strdup(char *src);
+
+enum { _PATH_MAX = 256 };
+
+void Fs_pathJoin(char * buffer, const char * part) {
+    if (buffer[0] != '\0' && buffer[strlen(buffer) - 1] != '/') {
+        strcat(buffer, "/");
+    }
+    strcat(buffer, part);
+}
+
+char * Fs_getExecPath() {
+    static char path[_PATH_MAX] = "";
+    static char dest[_PATH_MAX] = "";
+    pid_t pid = getpid();
+    sprintf(path, "/proc/%d/exe", pid);
+    if (-1 == readlink(path, dest, _PATH_MAX)) { return NULL; }
+    return dirname(dest);
+}
 
 // code adapted from https://stackoverflow.com/a/4204758/6634744
 PbList * Fs_getDirFiles(const char * dirPath) {

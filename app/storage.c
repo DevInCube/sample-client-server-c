@@ -1,6 +1,7 @@
 #include <storage.h>
 #include <assert.h>
 #include <fs.h>
+#include <stdio.h>
 
 struct Storage {
     PbList * students;
@@ -16,10 +17,21 @@ void Storage_free(Storage * self) {
     free(self);
 }
 
+enum { PATH_MAX = 256 };
+
+static char * getDataFilePath(const char * fileName) {
+    static char path[PATH_MAX] = "";
+    path[0] = '\0';
+    Fs_pathJoin(path, Fs_getExecPath());
+    Fs_pathJoin(path, "data");
+    Fs_pathJoin(path, fileName);
+    return path;
+}
+
 PbList * Storage_getAllFilesNew(Storage * self) {
-    const char * dataDir = NULL;
-    assert(0 && "Not impl");
-    return Fs_getDirFiles(dataDir);
+    char * fullPath = getDataFilePath("");
+    printf("> All files in dir: %s\n", fullPath);
+    return Fs_getDirFiles(fullPath);
 }
 void Storage_clearList(Storage * self) {
     assert(0 && "Not impl");
