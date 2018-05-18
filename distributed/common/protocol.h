@@ -4,6 +4,7 @@
 #include <progbase/collections/pblist.h>
 
 typedef enum {
+    FN_NONE,
     FN_GET_FILES,
     FN_NEW_LIST,
     FN_LOAD_LIST,
@@ -26,5 +27,9 @@ typedef struct {
 typedef struct {
     int status;
     int id;
-    PbList * list;
+    PbList * files;
+    PbList * students;
 } Response;
+
+int Protocol_sendRequest(Request * req, Response * res);
+void Response_clear(Response * res);

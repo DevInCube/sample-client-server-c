@@ -54,6 +54,7 @@ int Server_run(int port, ServerRequestHandler handler, void * context) {
 
         // send response
         out = Serialization_serializeResponse(&res);
+        Response_clear(&res);
         NetMessage_setDataString(&message, out);
         if (!TcpClient_send(client, &message)) {
             fprintf(stderr, "receive message error");

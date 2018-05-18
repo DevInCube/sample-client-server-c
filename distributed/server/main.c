@@ -6,7 +6,7 @@
 void handler(Request * req, Response * res, Storage * storage) {
     switch (req->functionName) {
         case FN_GET_FILES: {
-            // @todo
+            res->files = Storage_getAllFilesNew(storage);
             break;
         }
         case FN_NEW_LIST: {
@@ -14,31 +14,31 @@ void handler(Request * req, Response * res, Storage * storage) {
             break;
         }
         case FN_LOAD_LIST: {
-            // @todo
+            res->status = Storage_loadListFromFile(storage, req->fileName);
             break;
         }
         case FN_SAVE_LIST: {
-            // @todo
+            res->status = Storage_saveListToFile(storage, req->fileName);
             break;
         }
         case FN_GET_STUDENTS: {
-            // @todo
+            res->students = Storage_getAllStudentsNew(storage);
             break;
         }
         case FN_INSERT_STUDENT: {
-            // @todo
+            res->id = Storage_insertStudent(storage, &req->student);
             break;
         }
         case FN_UPDATE_STUDENT: {
-            // @todo
+            res->status = Storage_updateStudent(storage, &req->student);
             break;
         }
         case FN_DELETE_STUDENT: {
-            // @todo
+            res->status = Storage_deleteStudent(storage, &req->id);
             break;
         }
         default: {
-            fprintf(stderr, "[Server]> Error function name");
+            fprintf(stderr, "[Server]> Error function name\n");
             break;
         }
     }

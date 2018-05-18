@@ -42,7 +42,7 @@ Request Serialization_deserializeRequest(const char * text) {
 }
 char * Serialization_serializeRequest(Request * request) {
     // assert(0 && "Not impl");
-    return "";
+    return malloc(sizeof(char) * 1);
 }
 
 Response Serialization_deserializeResponse(const char * text) {

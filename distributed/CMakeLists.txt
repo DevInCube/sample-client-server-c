@@ -10,7 +10,7 @@ include_directories(common)
 include_directories(client)
 file(GLOB CLIENT_SOURCES "client/*.c")
 add_executable(${CMAKE_PROJECT_NAME} ${CLIENT_SOURCES} ${COMMON_SOURCES})
-target_link_libraries(${CMAKE_PROJECT_NAME} progbase jansson)
+target_link_libraries(${CMAKE_PROJECT_NAME} progbase jansson ssl)
 
 project(server)
 include_directories(common)
