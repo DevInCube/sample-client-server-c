@@ -3,15 +3,45 @@
 #include "server.h"
 #include "storage.h"
 
-Response handler(Request * req, Storage * storage) {
+void handler(Request * req, Response * res, Storage * storage) {
     switch (req->functionName) {
+        case FN_GET_FILES: {
+            // @todo
+            break;
+        }
         case FN_NEW_LIST: {
             Storage_clearList(storage);
             break;
         }
+        case FN_LOAD_LIST: {
+            // @todo
+            break;
+        }
+        case FN_SAVE_LIST: {
+            // @todo
+            break;
+        }
+        case FN_GET_STUDENTS: {
+            // @todo
+            break;
+        }
+        case FN_INSERT_STUDENT: {
+            // @todo
+            break;
+        }
+        case FN_UPDATE_STUDENT: {
+            // @todo
+            break;
+        }
+        case FN_DELETE_STUDENT: {
+            // @todo
+            break;
+        }
+        default: {
+            fprintf(stderr, "[Server]> Error function name");
+            break;
+        }
     }
-    Response res;
-    return res;
 }
 
 int main(void) {
