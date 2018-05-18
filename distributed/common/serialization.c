@@ -37,20 +37,20 @@ char * Serialization_serializeStudentsNew(PbList * list) {
 
 Request Serialization_deserializeRequest(const char * text) {
     Request req;
-    assert(0 && "Not impl");
+    // assert(0 && "Not impl");
     return req;
 }
 char * Serialization_serializeRequest(Request * request) {
-    assert(0 && "Not impl");
-    return NULL;
+    // assert(0 && "Not impl");
+    return "";
 }
 
 Response Serialization_deserializeResponse(const char * text) {
     Response res;
-    assert(0 && "Not impl");
+    // assert(0 && "Not impl");
     return res;
 }
 char * Serialization_serializeResponse(Response * response) {
-    assert(0 && "Not impl");
-    return NULL;
+    // assert(0 && "Not impl");
+    return "";
 }

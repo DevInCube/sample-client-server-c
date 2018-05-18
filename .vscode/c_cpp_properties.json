@@ -4,12 +4,14 @@
             "name": "Linux",
             "browse": {
                 "path": [
-                    "${workspaceFolder}/app"
+                    "${workspaceFolder}/app",
+                    "${workspaceFolder}/distributed/common"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
-                "${workspaceFolder}/app"
+                "${workspaceFolder}/app",
+                "${workspaceFolder}/distributed/common"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
