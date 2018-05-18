@@ -13,8 +13,16 @@ typedef struct {
     int length;
 } Menu;
 
+typedef enum {
+    MENU_INVALID,
+    MENU_OK,
+    MENU_RETURN
+} AcceptStatus;
+
 Menu * Menu_new(MenuItem items[], int itemsLen);
 void Menu_free(Menu * self);
+void Menu_show(Menu * self);
+AcceptStatus Menu_acceptInput(Menu * self, char input, void * context);
 
 int  getUserIntInput(const char * message);
 void getUserStringInput(const char * message, char * buf, int bufLen);

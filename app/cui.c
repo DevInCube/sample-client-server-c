@@ -18,6 +18,26 @@ void Menu_free(Menu * self) {
     free(self);
 }
 
+void Menu_show(Menu * self) {
+    puts("----------------------------");
+    for (int i = 0; i < self->length; i++) {
+        MenuItem * item = &self->items[i];
+        printf("%c | %s\n", item->key, item->name);
+    }
+    puts("----------------------------");
+}
+AcceptStatus Menu_acceptInput(Menu * self, char input, void * context) {
+    for (int i = 0; i < self->length; i++) {
+        MenuItem * item = &self->items[i];
+        if (item->key == input) {
+            if (item->handler == NULL) { return MENU_RETURN; }
+            item->handler(context);
+            return MENU_OK;
+        }
+    }
+    return MENU_INVALID;
+}
+
 static void clearStdIn();
 
 int  getUserIntInput(const char * message) {
