@@ -1,4 +1,5 @@
 #include <serialization.h>
+#include "protocol.h"
 #include <assert.h>
 #include <jansson.h>
 #include <student.h>
@@ -32,4 +33,24 @@ char * Serialization_serializeStudentsNew(PbList * list) {
     char * jsonStr = json_dumps(jarray, JSON_INDENT(2));
     json_decref(jarray);
     return jsonStr;
+}
+
+Request Serialization_deserializeRequest(const char * text) {
+    Request req;
+    assert(0 && "Not impl");
+    return req;
+}
+char * Serialization_serializeRequest(Request * request) {
+    assert(0 && "Not impl");
+    return NULL;
+}
+
+Response Serialization_deserializeResponse(const char * text) {
+    Response res;
+    assert(0 && "Not impl");
+    return res;
+}
+char * Serialization_serializeResponse(Response * response) {
+    assert(0 && "Not impl");
+    return NULL;
 }
