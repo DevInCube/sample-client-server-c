@@ -10,8 +10,7 @@
 #include <limits.h>
 #include <libgen.h>
 #include <string.h>
-
-static char *ft_strdup(char *src);
+#include <string_ext.h>
 
 enum { _PATH_MAX = 256 };
 
@@ -75,20 +74,4 @@ int Fs_writeAllText(const char * fileName, const char * buffer, int bufferLen) {
     long nwrite = fwrite(buffer, 1, bufferLen, f);
     fclose(f);
     return nwrite;  // number of bytes read
-}
-
-// adapted from https://stackoverflow.com/a/37132824/6634744
-static char *ft_strdup(char *src) {
-    char *str;
-    char *p;
-    int len = 0;
-
-    while (src[len])
-        len++;
-    str = malloc(len + 1);
-    p = str;
-    while (*src)
-        *p++ = *src++;
-    *p = '\0';
-    return str;
 }

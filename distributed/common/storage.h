@@ -14,6 +14,7 @@ int Storage_loadListFromFile(Storage * self, const char * fileName);
 int Storage_saveListToFile(Storage * self, const char * fileName);
 
 // CRUD operations
+
 PbList * Storage_getAllStudentsNew(Storage * self);
 int Storage_insertStudent(Storage * self, Student * student);
 int Storage_updateStudent(Storage * self, Student * student);

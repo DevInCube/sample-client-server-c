@@ -31,5 +31,4 @@ typedef struct {
     PbList * students;
 } Response;
 
-int Protocol_sendRequest(Request * req, Response * res);
 void Response_clear(Response * res);
