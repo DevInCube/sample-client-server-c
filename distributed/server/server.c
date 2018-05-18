@@ -1,9 +1,9 @@
 #include "server.h"
 #include <stdio.h>
 #include <progbase/net.h>
-#include <serialization.h>
+#include "../common/serialization.h"
 
-int Server_run(int port, ServerRequestHandler handler) {
+int Server_run(int port, ServerRequestHandler handler, void * context) {
     TcpListener server;
     TcpListener_init(&server);
     if (!TcpListener_bind(&server, IpAddress_initAny(&(IpAddress){}, port))) {
@@ -37,13 +37,15 @@ int Server_run(int port, ServerRequestHandler handler) {
         const char * in = NetMessage_data(&message);
         printf("[Server]> got request string:\n%s\n", in);
         Request req = Serialization_deserializeRequest(in);
-        Response res = handler(&req);
+        printf("[Server]> get request for function '%s'\n", FunctionName_toString(req.functionName));
+        Response res = handler(&req, context);
         char * out = Serialization_serializeResponse(&res);
         NetMessage_setDataString(&message, out);
         if (!TcpClient_send(client, &message)) {
             fprintf(stderr, "receive message error");
             continue;
         }
+        free(out);
         printf("[Server]> sent response string:\n%s\n", out);
         TcpClient_close(client);
         puts("[Server]> connection closed.");

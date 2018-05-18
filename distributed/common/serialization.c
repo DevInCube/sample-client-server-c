@@ -52,5 +52,5 @@ Response Serialization_deserializeResponse(const char * text) {
 }
 char * Serialization_serializeResponse(Response * response) {
     // assert(0 && "Not impl");
-    return "";
+    return malloc(sizeof(char) * 1);
 }

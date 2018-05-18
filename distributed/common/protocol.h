@@ -14,6 +14,8 @@ typedef enum {
     FN_DELETE_STUDENT
 } FunctionName;
 
+char * FunctionName_toString(FunctionName fn);
+
 typedef struct {
     FunctionName functionName;
     int id;
