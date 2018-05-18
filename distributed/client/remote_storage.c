@@ -10,6 +10,7 @@ Storage * Storage_new() {
     Storage * self = malloc(sizeof(Storage));
     return self;
 }
+
 void Storage_free(Storage * self) {
     Storage_free(self);
 }
@@ -25,6 +26,7 @@ PbList * Storage_getAllFilesNew(Storage * self) {
     }
     return res.files;
 }
+
 void Storage_clearList(Storage * self) {
     Request req = {0};
     req.functionName = FN_NEW_LIST;
@@ -34,6 +36,7 @@ void Storage_clearList(Storage * self) {
         fprintf(stderr, "Send request error\n");
     }
 }
+
 int Storage_loadListFromFile(Storage * self, const char * fileName) {
     Request req = {0};
     req.functionName = FN_LOAD_LIST;
@@ -46,6 +49,7 @@ int Storage_loadListFromFile(Storage * self, const char * fileName) {
     }
     return res.status;
 }
+
 int Storage_saveListToFile(Storage * self, const char * fileName) {
     Request req = {0};
     req.functionName = FN_SAVE_LIST;
@@ -73,6 +77,7 @@ PbList * Storage_getAllStudentsNew(Storage * self) {
     }
     return res.students;
 }
+
 int Storage_insertStudent(Storage * self, Student * student) {
     Request req = {0};
     req.functionName = FN_INSERT_STUDENT;
@@ -85,6 +90,7 @@ int Storage_insertStudent(Storage * self, Student * student) {
     }
     return res.id;
 }
+
 int Storage_updateStudent(Storage * self, Student * student) {
     Request req = {0};
     req.functionName = FN_UPDATE_STUDENT;
@@ -97,6 +103,7 @@ int Storage_updateStudent(Storage * self, Student * student) {
     }
     return res.status;
 }
+
 int Storage_deleteStudent(Storage * self, int id) {
     Request req = {0};
     req.functionName = FN_DELETE_STUDENT;

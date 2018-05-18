@@ -19,9 +19,11 @@ char * FunctionName_toString(FunctionName fn) {
 
 void Response_clear(Response * res) {
     if (res->files != NULL) {
-        // @todo
+        // @todo free strings
+        PbList_free(res->files);
     }
     if (res->students != NULL) {
-        // @todo
+        // @todo free students
+        PbList_free(res->students);
     }
 }
