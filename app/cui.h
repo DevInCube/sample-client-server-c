@@ -25,5 +25,6 @@ void Menu_show(Menu * self);
 AcceptStatus Menu_acceptInput(Menu * self, char input, void * context);
 
 int  getUserIntInput(const char * message);
+float getUserFloatInput(const char * message);
 void getUserStringInput(const char * message, char * buf, int bufLen);
 char getUserInput(const char * message);

@@ -47,6 +47,14 @@ int  getUserIntInput(const char * message) {
     clearStdIn();
     return x;
 }
+
+float  getUserFloatInput(const char * message) {
+    printf("> %s: ", message);
+    float x = 0;
+    scanf("%f", &x);
+    clearStdIn();
+    return x;
+}
 void getUserStringInput(const char * message, char * buf, int bufLen) {
     printf("> %s: ", message);
     fgets(buf, bufLen, stdin);

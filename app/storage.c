@@ -58,6 +58,7 @@ int Storage_loadListFromFile(Storage * self, const char * fileName) {
     }
     PbList * students = Serialization_deserializeStudentsNew(text);
     free(text);
+    if (students == NULL) { return 1; }
     clearStudents(self);
     PbList_free(self->students);
     self->students = students;
@@ -77,9 +78,12 @@ int Storage_saveListToFile(Storage * self, const char * fileName) {
 }
 
 // CRUD operations
+
 PbList * Storage_getAllStudentsNew(Storage * self) {
     PbList * l = PbList_new();
-    for (int i = 0; i < PbList_count(self->students); i++) {
+    int count = PbList_count(self->students);
+    printf("[Storage]> Get %i students from storage\n", count);
+    for (int i = 0; i < count; i++) {
         PbList_add(l, Student_newCopy(PbList_at(self->students, i)));
     }
     return l;
