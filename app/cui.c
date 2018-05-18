@@ -4,6 +4,20 @@
 #include <string.h>
 #include <progbase/console.h>
 
+Menu * Menu_new(MenuItem items[], int itemsLen) {
+    Menu * self = malloc(sizeof(Menu));
+    self->items = malloc(sizeof(MenuItem) * itemsLen);
+    for (int i = 0; i < itemsLen; i++) {
+        self->items[i] = items[i];
+    }
+    self->length = itemsLen;
+    return self;
+}
+void Menu_free(Menu * self) {
+    free(self->items);
+    free(self);
+}
+
 static void clearStdIn();
 
 int  getUserIntInput(const char * message) {
