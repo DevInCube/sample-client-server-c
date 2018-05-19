@@ -34,7 +34,7 @@ void handler(Request * req, Response * res, Storage * storage) {
             break;
         }
         case FN_DELETE_STUDENT: {
-            res->status = Storage_deleteStudent(storage, &req->id);
+            res->status = Storage_deleteStudent(storage, req->id);
             break;
         }
         default: {

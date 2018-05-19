@@ -24,6 +24,8 @@ typedef struct {
     char fileName[100];
 } Request;
 
+void Request_clear(Request * req);
+
 typedef struct {
     int status;
     int id;

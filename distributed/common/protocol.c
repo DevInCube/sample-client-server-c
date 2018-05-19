@@ -17,6 +17,10 @@ char * FunctionName_toString(FunctionName fn) {
     return "";
 }
 
+void Request_clear(Request * req) {
+    *req = (Request){0};
+}
+
 void Response_clear(Response * res) {
     if (res->files != NULL) {
         // @todo free strings
@@ -26,4 +30,5 @@ void Response_clear(Response * res) {
         // @todo free students
         PbList_free(res->students);
     }
+    *res = (Response){0};
 }
